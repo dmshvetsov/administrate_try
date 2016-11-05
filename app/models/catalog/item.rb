@@ -1,5 +1,5 @@
 class Catalog::Item < ApplicationRecord
-  belongs_to :category, foreign_key: 'catalog_category_id'
+  belongs_to :category
 
   def price
     price_cents.try(:fdiv, 100)

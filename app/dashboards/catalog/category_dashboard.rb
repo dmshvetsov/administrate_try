@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class Catalog::ItemDashboard < Administrate::BaseDashboard
+class Catalog::CategoryDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,12 +8,11 @@ class Catalog::ItemDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    'catalog/items': Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    price: Field::Number.with_options(decimals: 2),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    'catalog/category': Field::BelongsTo,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -22,10 +21,9 @@ class Catalog::ItemDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :'catalog/items',
     :id,
     :title,
-    :price,
-    :'catalog/category',
     :created_at,
   ].freeze
 
@@ -34,25 +32,23 @@ class Catalog::ItemDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :title,
-    :price,
-    :'catalog/category',
     :created_at,
     :updated_at,
+    :'catalog/items',
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :'catalog/items',
     :title,
-    :price,
-    :'catalog/category'
   ].freeze
 
-  # Overwrite this method to customize how items are displayed
+  # Overwrite this method to customize how categories are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(item)
-  #   "Catalog::Item ##{item.id}"
-  # end
+  def display_resource(category)
+    category.title
+  end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     namespace :catalog do
       resources :items
+      resources :categories
     end
 
     root to: "catalog/items#index"
