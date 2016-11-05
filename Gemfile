@@ -12,7 +12,8 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Path given intentionaly, change to 
+# Path given intentionaly for testing new features
+# change to 
 # gem 'administrate'
 # if you do not have local copy of the gem on the development machine.
 gem 'administrate', path: '~/Projects/administrate'
