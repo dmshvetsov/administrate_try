@@ -16,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'administrate'
 # if you do not have local copy of the gem on the development machine.
 gem 'administrate', path: '~/Projects/administrate'
+gem 'bcrypt'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
