@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105121855) do
+ActiveRecord::Schema.define(version: 20161105122031) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20161105121855) do
   create_table "catalog_items", force: :cascade do |t|
     t.string   "title"
     t.integer  "price_cents"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "catalog_category_id"
+    t.index ["catalog_category_id"], name: "index_catalog_items_on_catalog_category_id"
   end
 
 end
