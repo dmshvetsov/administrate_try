@@ -8,11 +8,11 @@ class Catalog::CategoryDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    'catalog/items': Field::HasMany,
-    id: Field::Number,
-    title: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    "catalog/items" => Field::HasMany,
+    "id" => Field::Number,
+    "title" => Field::String,
+    "created_at" => Field::DateTime,
+    "updated_at" => Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -21,28 +21,28 @@ class Catalog::CategoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :'catalog/items',
-    :id,
-    :title,
-    :created_at,
+    "id",
+    "title",
+    "catalog/items",
+    "created_at",
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
-    :title,
-    :created_at,
-    :updated_at,
-    :'catalog/items',
+    "id",
+    "title",
+    "catalog/items",
+    "created_at",
+    "updated_at",
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :'catalog/items',
-    :title,
+    "title",
+    "catalog/items",
   ].freeze
 
   # Overwrite this method to customize how categories are displayed

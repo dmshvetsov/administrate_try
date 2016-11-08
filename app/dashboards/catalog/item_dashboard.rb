@@ -8,12 +8,13 @@ class Catalog::ItemDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
-    title: Field::String,
-    price: Field::Number.with_options(decimals: 2),
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    'catalog/category': Field::BelongsTo,
+    "catalog/category" => Field::BelongsTo,
+    "id" => Field::Number,
+    "title" => Field::String,
+    "price_cents" => Field::Number,
+    "price" => Field::Number.with_options(decimals: 2),
+    "created_at" => Field::DateTime,
+    "updated_at" => Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -22,37 +23,36 @@ class Catalog::ItemDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
-    :title,
-    :price,
-    :'catalog/category',
-    :created_at,
+    "id",
+    "title",
+    "catalog/category",
+    "price",
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
-    :title,
-    :price,
-    :'catalog/category',
-    :created_at,
-    :updated_at,
+    "id",
+    "title",
+    "catalog/category",
+    "price",
+    "created_at",
+    "updated_at",
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
-    :price,
-    :'catalog/category'
+    "title",
+    "catalog/category",
+    "price",
   ].freeze
 
   # Overwrite this method to customize how items are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(item)
-  #   "Catalog::Item ##{item.id}"
-  # end
+  def display_resource(item)
+    item.title ? item.title : "#{item.class.name} #{item.id}"
+  end
 end

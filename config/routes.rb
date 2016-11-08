@@ -3,10 +3,11 @@ Rails.application.routes.draw do
     resources :admin_users
 
     namespace :catalog do
-      resources :items
       resources :categories
+      resources :items
     end
 
-    root to: "catalog/items#index"
+    root to: "admin_users#index"
   end
+
 end
